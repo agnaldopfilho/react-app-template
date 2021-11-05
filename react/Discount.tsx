@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useProduct } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
 import styled from 'styled-components'
+import { formatPrice } from './helpers/Helper'
+
 
 const CSS_HANDLES = ['container', 'price', 'discountMessage']
 
@@ -31,7 +33,7 @@ const Discount: StorefrontFunctionComponent = () => {
     const RenderDiscountPrice = () => {
         return (
             <Container className={`${handles.container}`}>
-                <Price className={`${handles.price}`}>{discountTotal}</Price>
+                <Price className={`${handles.price}`}>{formatPrice(discountTotal)}</Price>
                 <DiscountMessage className={`${handles.discountMessage}`}>à vista no boleto com 5% de desconto</DiscountMessage>
             </Container>
         )

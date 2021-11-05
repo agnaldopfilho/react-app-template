@@ -1,7 +1,8 @@
 interface ShelfType {
-    linkUrl: string,
-    imageUrl: string,
+    id: string,
+    imageURL: string,
     name: string,
     sellingPrice: number,
-    price: number
+    price: number,
+    addToCart: any,
 }
