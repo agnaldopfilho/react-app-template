@@ -8,7 +8,7 @@ interface TitleProps {
 
 const CSS_HANDLES = ['title'] as const
 
-const Title: StorefrontFunctionComponent<TitleProps> = ({
+const CountdownTitle: StorefrontFunctionComponent<TitleProps> = ({
     title
 }: TitleProps) => {
     const handles = useCssHandles(CSS_HANDLES)
@@ -23,7 +23,7 @@ const Title: StorefrontFunctionComponent<TitleProps> = ({
     )
 }
 
-Title.schema = {
+CountdownTitle.schema = {
     title: 'editor.countdown-title.title',
     description: 'editor.countdown-title.description',
     type: 'object',
@@ -36,4 +36,4 @@ Title.schema = {
     }
 }
 
-export default Title
+export default CountdownTitle
