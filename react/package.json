@@ -21,12 +21,13 @@
     "@vtex/test-tools": "^3.3.2",
     "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
-    "corebizio.appexample-agnaldo": "https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636117650/public/@types/corebizio.appexample-agnaldo",
+    "corebizio.appexample-agnaldo": "https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636125587/public/@types/corebizio.appexample-agnaldo",
     "graphql": "^14.6.0",
     "typescript": "3.9.7",
     "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.4/public/@types/vtex.css-handles",
     "vtex.product-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-context@0.10.0/public/@types/vtex.product-context",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime",
-    "vtex.search-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql"
+    "vtex.search-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql",
+    "vtex.slider-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout"
   }
 }

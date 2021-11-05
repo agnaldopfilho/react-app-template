@@ -10,5 +10,8 @@
   },
   "countdown.title": {
     "component": "CountdownTitle"
+  },
+  "custom-shelf": {
+    "component": "Shelf"
   }
 }

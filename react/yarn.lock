@@ -2332,9 +2332,9 @@ core-util-is@1.0.2:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-"corebizio.appexample-agnaldo@https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636117650/public/@types/corebizio.appexample-agnaldo":
+"corebizio.appexample-agnaldo@https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636125587/public/@types/corebizio.appexample-agnaldo":
   version "0.0.0"
-  resolved "https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636117650/public/@types/corebizio.appexample-agnaldo#f802f445b4cb2a3c96706acc02799fa19b46a93a"
+  resolved "https://agnaldogobeyond--corebizio.myvtex.com/_v/private/typings/linked/v1/corebizio.appexample-agnaldo@0.0.0+build1636125587/public/@types/corebizio.appexample-agnaldo#b9380e968e1a9193b026119b22b95cff038999c7"
 
 cross-spawn@^6.0.0:
   version "6.0.5"
@@ -5205,6 +5205,10 @@ verror@1.10.0:
 "vtex.search-graphql@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql":
   version "0.47.2"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-graphql@0.47.2/public/@types/vtex.search-graphql#9bc27e570e10137514135b80afebc007f651be87"
+
+"vtex.slider-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout":
+  version "0.22.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout#d0e9ce16b9f9ea2bcc50a3cc42c5466d565141c0"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
