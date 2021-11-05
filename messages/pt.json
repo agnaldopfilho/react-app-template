@@ -1,4 +1,7 @@
 {
   "admin/test": "teste",
-  "store/test": "teste"
+  "store/test": "teste",
+  "editor.countdown.title": "Contagem regressiva",
+  "editor.countdown.description": "Componente de contagem regressiva",
+  "countdown.title": "Contagem Regressiva"
 }

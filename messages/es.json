@@ -1,4 +1,7 @@
 {
   "admin/test": "teste",
-  "store/test": "teste"
+  "store/test": "teste",
+  "editor.countdown.title": "Countdown",
+  "editor.countdown.description": "Countdown component",
+  "countdown.title": "Countdown"
 }

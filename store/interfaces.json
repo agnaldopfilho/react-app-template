@@ -4,5 +4,11 @@
   },
   "discount": {
     "component": "Discount"
+  },
+  "countdown": {
+    "component": "Countdown"
+  },
+  "countdown.title": {
+    "component": "Title"
   }
 }
