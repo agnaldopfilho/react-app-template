@@ -11,17 +11,28 @@ const CSS_HANDLES = [
 const Shelf = () => {
     const { addItems } = useOrderItems()
     const [arrayProducts, setArrayProducts] = useState([]) as any
+    const [categoryTitle, setCategoryTitle] = useState('...') as any
     const handles = useCssHandles(CSS_HANDLES)
+    console.log('category title', categoryTitle)
 
     useEffect(() => {
-        getICategoryItems()
+        getCategoryInfo()
+        getCategoryItems()
     }, [])
 
-    const getICategoryItems = () => {
-        fetch('/api/catalog_system/pub/products/search/moda/calcados')
+    const getCategoryItems = async () => {
+        await fetch('/api/catalog_system/pub/products/search/moda/calcados')
             .then(response => response.json())
             .then((data) => {
                 setArrayProducts(data)
+            })
+    }
+
+    const getCategoryInfo = async () => {
+        await fetch(`/api/catalog/pvt/category/9`)
+            .then(response => response.json())
+            .then((data) => {
+                setCategoryTitle(data.Title)
             })
     }
 
@@ -32,7 +43,6 @@ const Shelf = () => {
             .then((data) => {
                 populaterCart(data)
             })
-
     }
 
     const populaterCart = (data: any) => {
@@ -68,10 +78,9 @@ const Shelf = () => {
         addItems(cart)
     }
 
-
     return (
-        <div className={`${handles.containerShlef}`}>
-            <h1>My custom shelf</h1>
+        <div className={`${handles.containerShelf}`}>
+            <h1 className={`t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>{`My custom shelf - Category: ${categoryTitle}`}</h1>
             <SliderLayout
                 itemsPerPage={{
                     desktop: 4,
@@ -79,6 +88,7 @@ const Shelf = () => {
                     phone: 2
                 }}
                 showPaginationDots="never"
+                showNavigationArrows="desktopOnly"
                 infinite={true}
             >
                 {arrayProducts.map((product: any) => (
