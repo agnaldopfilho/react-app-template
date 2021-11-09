@@ -5,6 +5,7 @@ import { Link } from "vtex.render-runtime"
 
 const CSS_HANDLES = [
     'shelfItem',
+    "shelfLink",
     'shelfImage',
     'shelfImage__img',
     'shelfProductName',
@@ -27,7 +28,7 @@ const ShelfItem = ({
     return (
         <>
             <div key={id} className={`${handles.shelfItem}`}>
-                <Link to={linkProduct}>
+                <Link to={linkProduct} className={`${handles.shelfLink}`}>
                     <div className={`${handles.shelfImage}`}>
                         <img src={`${imageURL}`} alt={`${name}`} className={`${handles.shelfImage__img}`} />
                     </div>

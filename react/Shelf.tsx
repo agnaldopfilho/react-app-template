@@ -19,16 +19,17 @@ const Shelf = () => {
     const handles = useCssHandles(CSS_HANDLES)
 
     useEffect(() => {
-        setCategoryURL(productContext?.product?.categoryTree?.slice(-1)[0].href)
-        setCategoryTitle(productContext?.product?.categoryTree?.slice(-1)[0].name)
-
-        if (categoryURL) {
+        const URL = productContext?.product?.categoryTree?.slice(-1)[0].href
+        const TITLE = productContext?.product?.categoryTree?.slice(-1)[0].name
+        setCategoryURL(URL)
+        setCategoryTitle(TITLE)
+        if (categoryURL && categoryTitle) {
             getCategoryItems()
         }
     }, [productContext])
 
-    const getCategoryItems = async () => {
-        await fetch(`/api/catalog_system/pub/products/search${categoryURL}`)
+    const getCategoryItems = () => {
+        fetch(`/api/catalog_system/pub/products/search${categoryURL}`)
             .then(response => response.json())
             .then((data) => {
                 if (data) {
@@ -78,7 +79,7 @@ const Shelf = () => {
         // O addItems ele espera receber um array de objeto com informações úteis do produto para adicionar ao carrinho.
         addItems(cart)
     }
-    console.log(arrayProducts)
+
     return (
         <div className={`${handles.containerShelf}`}>
             {arrayProducts ?
