@@ -1,6 +1,7 @@
 import React from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { formatPrice } from '../helpers/Helper'
+import { Link } from "vtex.render-runtime"
 
 const CSS_HANDLES = [
     'shelfItem',
@@ -15,6 +16,7 @@ const CSS_HANDLES = [
 
 const ShelfItem = ({
     id,
+    linkProduct,
     imageURL,
     name,
     sellingPrice,
@@ -25,18 +27,21 @@ const ShelfItem = ({
     return (
         <>
             <div key={id} className={`${handles.shelfItem}`}>
-                <div className={`${handles.shelfImage}`}>
-                    <img src={`${imageURL}`} alt={`${name}`} className={`${handles.shelfImage__img}`} />
-                </div>
-                <h2 className={`${handles.shelfProductName}`}>{`${name}`}</h2>
-                <div className={`${handles.shelfPrice}`}>
-                    <p className={`${handles.shelfSellingPrice}`}>
-                        {formatPrice(sellingPrice)}
-                    </p>
-                    <p className={`${handles.shelfBestPrice}`}>
-                        {formatPrice(price)}
-                    </p>
-                </div>
+                <Link to={linkProduct}>
+                    <div className={`${handles.shelfImage}`}>
+                        <img src={`${imageURL}`} alt={`${name}`} className={`${handles.shelfImage__img}`} />
+                    </div>
+                    <h2 className={`${handles.shelfProductName}`}>{`${name}`}</h2>
+                    <div className={`${handles.shelfPrice}`}>
+                        <p className={`${handles.shelfSellingPrice}`}>
+                            {formatPrice(sellingPrice)}
+                        </p>
+                        <p className={`${handles.shelfBestPrice}`}>
+                            {formatPrice(price)}
+                        </p>
+                    </div>
+                </Link>
+
                 <div className={`${handles.shelfButtonAddToCart}`} id={id} onClick={addToCart}>
                     Adicionar ao carrinho
                 </div>

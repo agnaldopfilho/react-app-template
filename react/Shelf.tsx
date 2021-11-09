@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ShelfItem from './components/ShelfItem'
 import { SliderLayout } from 'vtex.slider-layout'
 import { useCssHandles } from 'vtex.css-handles'
+import { useProduct } from 'vtex.product-context'
 import { useOrderItems } from 'vtex.order-items/OrderItems'
 
 const CSS_HANDLES = [
@@ -9,30 +10,30 @@ const CSS_HANDLES = [
 ]
 
 const Shelf = () => {
+    const productContext = useProduct()
     const { addItems } = useOrderItems()
-    const [arrayProducts, setArrayProducts] = useState([]) as any
+    const [arrayProducts, setArrayProducts] = useState() as any
     const [categoryTitle, setCategoryTitle] = useState('...') as any
+    const [categoryURL, setCategoryURL] = useState() as any
+
     const handles = useCssHandles(CSS_HANDLES)
-    console.log('category title', categoryTitle)
 
     useEffect(() => {
-        getCategoryInfo()
-        getCategoryItems()
-    }, [])
+        setCategoryURL(productContext?.product?.categoryTree?.slice(-1)[0].href)
+        setCategoryTitle(productContext?.product?.categoryTree?.slice(-1)[0].name)
+
+        if (categoryURL) {
+            getCategoryItems()
+        }
+    }, [productContext])
 
     const getCategoryItems = async () => {
-        await fetch('/api/catalog_system/pub/products/search/moda/calcados')
+        await fetch(`/api/catalog_system/pub/products/search${categoryURL}`)
             .then(response => response.json())
             .then((data) => {
-                setArrayProducts(data)
-            })
-    }
-
-    const getCategoryInfo = async () => {
-        await fetch(`/api/catalog/pvt/category/9`)
-            .then(response => response.json())
-            .then((data) => {
-                setCategoryTitle(data.Title)
+                if (data) {
+                    setArrayProducts(data)
+                }
             })
     }
 
@@ -77,37 +78,41 @@ const Shelf = () => {
         // O addItems ele espera receber um array de objeto com informações úteis do produto para adicionar ao carrinho.
         addItems(cart)
     }
-
+    console.log(arrayProducts)
     return (
         <div className={`${handles.containerShelf}`}>
-            <h1 className={`t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>{`My custom shelf - Category: ${categoryTitle}`}</h1>
-            <SliderLayout
-                itemsPerPage={{
-                    desktop: 4,
-                    tablet: 3,
-                    phone: 2
-                }}
-                showPaginationDots="never"
-                showNavigationArrows="desktopOnly"
-                infinite={true}
-            >
-                {arrayProducts.map((product: any) => (
-                    <ShelfItem
-                        key={product.productId}
-                        id={product.productId}
-                        imageURL={product.items[0].images[0].imageUrl}
-                        name={product.productName}
-                        sellingPrice={product.items[0].sellers[0].commertialOffer.ListPrice}
-                        price={product.items[0].sellers[0].commertialOffer.Price}
-                        addToCart={addToCart}
-                    />
-                ))}
-            </SliderLayout>
             {arrayProducts ?
                 <>
+                    <h1 className={`t-heading-2 fw3 w-100 flex justify-center pt7 pb6 c-muted-1`}>
+                        {`My custom shelf - Category: ${categoryTitle ? categoryTitle : '...'}`}
+                    </h1>
 
+                    <SliderLayout
+                        itemsPerPage={{
+                            desktop: 4,
+                            tablet: 3,
+                            phone: 2
+                        }}
+                        showPaginationDots="mobileOnly"
+                        showNavigationArrows="desktopOnly"
+                        infinite={true}
+                    >
+                        {arrayProducts.map((product: any) => (
+                            <ShelfItem
+                                key={product.productId}
+                                id={product.productId}
+                                linkProduct={product.link}
+                                imageURL={product.items[0].images[0].imageUrl}
+                                name={product.productName}
+                                sellingPrice={product.items[0].sellers[0].commertialOffer.ListPrice}
+                                price={product.items[0].sellers[0].commertialOffer.Price}
+                                addToCart={addToCart}
+                            />
+                        ))}
+                    </SliderLayout>
                 </>
-                : ''}
+                : ''
+            }
         </div>
     )
 }
